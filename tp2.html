@@ -1,21 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <header>Trabajo Practico 2</header>
+<!--
+
 
 <body>
-    <form>
-        <input type="text" name="firstName" placeholder="uhhh ohhh" maxlength="20"pattern="[a-zA-Z0-9\s]*"
-        title="No seas boludo escribi bien payaso">
+    <form onsubmit="validatePassword()">
+        <input type="text" name="firstName" placeholder="uhhh ohhh" maxlength="20" pattern="[a-zA-Z0-9\s]*"
+            title="No seas boludo escribi bien payaso" required>
         <input type="text" name="secondName" placeholder="que sera esto no?" maxlength="20" pattern="[a-zA-Z0-9\s]*"
             title="No seas boludo escribi bien payaso">
         <br>
-        <input type="text" name="Age" placeholder="Cuantos anitos tenes?" maxlength="2"pattern="[0-9\s]*">
+        <input type="text" name="Age" placeholder="Cuantos anitos tenes?" maxlength="2" pattern="[0-9\s]*">
         <br>
-        <input type="password" name="password" placeholder="password..." minlength="9" maxlength="20">
-        <input type="email" name="email" placeholder="email...">
+        <input type="password" name="password" id="password" placeholder="password..." minlength="9" maxlength="20"
+            required>
+        <input type="email" name="email" placeholder="email..." required>
         <br>
         <button type="submit">send</button>
     </form>
+
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const hasUpperCase = /[A-Z]/.test(password);
+            const hasLowerCase = /[a-z]/.test(password);
+
+            if (!hasLowerCase || !hasUpperCase) {
+                alert("no mayuscula o minuscula en password");
+                return false
+            }
+            return true;
+        }
+
+    </script>
+
+  <select name="hola" id="product">
+        <option value="product 1">product 1</option>
+        <option value="product 2">product 2</option>
+        <option value="product 3">product 3</option>
+    </select>
+
+    <button onclick="addElement()">Add</button>
+
+
 </body>
+-->
+
+<body>
+    <h1>Productos</h1>
+    <ul id="product2">
+        <li value="1">product 1 <button onclick="addElement(this)">whishlist it</button></li>
+        <li value="2">product 2 <button onclick="addElement(this)">whishlist it</button></li>
+        <li value="3">product 3 <button onclick="addElement(this)">whishlist it</button></li>
+    </ul>
+
+
+
+
+
+    <h2>Elementos Seleccionados:</h2>
+    <ul id="selectedList"></ul>
+
+    <script>
+const productAdded = new Set();
+        function addElement(button) {
+            const productName = button.parentElement.textContent.trim();
+            const whishlist = document.getElementById("selectedList");
+            if(productAdded.has(productName))
+            {
+                alert("noo papa ya lo tenes");
+                return;
+            }
+
+            const newElement = document.createElement("li");
+            newElement.textContent = productName;
+
+            whishlist.appendChild(newElement);
+            productAdded.add(productName);
+        }
+    </script>
+</body>
+
 
 </html>
