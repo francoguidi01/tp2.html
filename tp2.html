@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-<header>Trabajo Practico 2</header>
-<!--
+
+<head>
+    <title>TP 2</title>
+    <header>Trabajo Practico 2</header>
+</head>
+
+
 
 
 <body>
-    <form onsubmit="validatePassword()">
-        <input type="text" name="firstName" placeholder="uhhh ohhh" maxlength="20" pattern="[a-zA-Z0-9\s]*"
-            title="No seas boludo escribi bien payaso" required>
-        <input type="text" name="secondName" placeholder="que sera esto no?" maxlength="20" pattern="[a-zA-Z0-9\s]*"
-            title="No seas boludo escribi bien payaso">
-        <br>
-        <input type="text" name="Age" placeholder="Cuantos anitos tenes?" maxlength="2" pattern="[0-9\s]*">
-        <br>
-        <input type="password" name="password" id="password" placeholder="password..." minlength="9" maxlength="20"
-            required>
-        <input type="email" name="email" placeholder="email..." required>
-        <br>
+    <form onsubmit="validateName_Password()">
+        <input id="firstName" type="text" name="name" placeholder="name" >
+        <input id="password" type="password" name="password" placeholder="password">
         <button type="submit">send</button>
     </form>
 
@@ -36,17 +32,42 @@
 
     </script>
 
-  <select name="hola" id="product">
-        <option value="product 1">product 1</option>
-        <option value="product 2">product 2</option>
-        <option value="product 3">product 3</option>
-    </select>
+    <script>
+        function validateName_Password() {
+            var name = document.getElementById("firstName").value;
+            var password = document.getElementById("password").value;
 
-    <button onclick="addElement()">Add</button>
+            if (name === "" || password === "") {
+                alert("THERE'S NOTHING ON PASSWORD &/OR NAME");
+                return false;
+            }
 
+            if (/[^a-zA-Z\s]/.test(name))
+            {
+                alert("THE NAME HAS ESPECIAL CHARACTERS");
+                return false;
+            }
+        
+            return true;
+        }
+    </script>
 
+<!--
 </body>
--->
+ ESTO ES CON VALIDACIONES DE HTML
+ <input type="text" name="firstName" placeholder="uhhh ohhh" maxlength="20" pattern="[a-zA-Z0-9\s]*"
+            title="No seas boludo escribi bien payaso" required>
+        <input type="text" name="secondName" placeholder="second name" maxlength="20" pattern="[a-zA-Z0-9\s]*"
+            title="No seas boludo escribi bien payaso">
+        <br>
+        <input type="text" name="Age" placeholder="Cuantos anitos tenes?" maxlength="2" pattern="[0-9\s]*">
+        <br>
+        <input type="password" name="password" id="password" placeholder="password..." minlength="9" maxlength="20"
+            required>
+        <input type="email" name="email" placeholder="email..." required>
+        <br>
+
+
 
 <body>
     <h1>Productos</h1>
@@ -85,3 +106,4 @@ const productAdded = new Set();
 
 
 </html>
+-->
